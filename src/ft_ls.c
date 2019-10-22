@@ -59,10 +59,11 @@ int		main(int argc, char const **argv)
 	ls_init(&ls);
 	argc -= g_optind;
 	argv += g_optind;
-	if (argc > 1 || ls.opt & F_RECURSIVE)
-		status = traverse(&ls, argc ? argv : (char const *[]){"."}, argc);
-	else
-		status = single_dir(&ls, argc ? argv[0] : (char const *)".");
+//	if (argc > 1 || ls.opt & F_RECURSIVE)
+		status = argc ? traverse(&ls, argv, argc)
+					: traverse(&ls, (char const *[]){"."}, 1);
+//	else
+//		status = single_dir(&ls, argc ? argv[0] : (char const *)".");
 	if (status != 0)
 		ft_dprintf(2, "ft_ls: %s\n", strerror(errno));
 	return (EXIT_SUCCESS);

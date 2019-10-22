@@ -23,7 +23,7 @@ t_file	*new_file(t_file *dir)
 		if (!(tmp = malloc(sizeof(t_file) * g_capacity)))
 			return (NULL);
 		i = 0;
-		while (i < g_index - 1)
+		while (i < g_index)
 		{
 			tmp[i] = g_pool[i];
 			++i;
@@ -37,7 +37,6 @@ t_file	*new_file(t_file *dir)
 
 t_file	*new_dir(void)
 {
-	ft_printf("capacity: %llu\n", g_capacity);
 	if (g_pool == NULL)
 		if (!(g_pool = malloc(sizeof(t_file) * g_capacity)))
 			return (NULL);
